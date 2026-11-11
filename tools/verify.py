@@ -48,7 +48,8 @@ def verify_records():
     # A stale page must be detected. Isolated fixture avoids touching user state.
     original_root, original_state = lab.ROOT, lab.STATE
     try:
-        with tempfile.TemporaryDirectory() as folder:
+        (original_root/'.local').mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=original_root/'.local') as folder:
             lab.ROOT = Path(folder)
             lab.STATE = lab.ROOT/'learning-state.json'
             lab.write(lab.STATE, lab.read(original_state))

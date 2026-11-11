@@ -10,7 +10,6 @@ import platform
 import shutil
 import subprocess
 import sys
-import tempfile
 import time
 from datetime import datetime
 from pathlib import Path
@@ -157,8 +156,8 @@ def smoke(backend, length):
         else:
             config = read(ROOT/'.local/config.json')
             record['implementation']['cst_version'] = '2025'
-            # CST writes outside OneDrive; only closed outputs are archived.
-            work = Path(tempfile.gettempdir())/'CST-Research-Lab'/run_id
+            # Keep project solver files on the project drive, not the system TEMP drive.
+            work = ROOT/'.local/solver-work'/run_id
             work.mkdir(parents=True)
             cmd = [sys.executable, str(ROOT/'tools/cst_worker.py'), '--install', config['cst_install'], '--output', str(work), '--length-mm', str(length)]
             proc = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=300, env={**os.environ, 'PYTHONIOENCODING': 'utf-8'})

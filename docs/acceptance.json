@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-11T11:34:36+08:00",
-  "verification_script_sha256": "f5290f3793ffae6ebc7aaece83d093422d1e77d83d1202b4be19299413af43e5",
+  "checked_at": "2026-11-11T12:35:37+08:00",
+  "verification_script_sha256": "6114314d733566bec20ebbdec3a5aaf80bafc04f44588eedc8b4e4b1deb94679",
   "functional": {
     "solver_vs_analytic": [
       {
@@ -20,6 +20,12 @@
         "length_mm": 10.0,
         "max_complex_s21_error": 0.002583635592460732,
         "limit": 0.02
+      },
+      {
+        "run_id": "20261111-123434-652972-cst",
+        "length_mm": 10.0,
+        "max_complex_s21_error": 0.002583635592460732,
+        "limit": 0.02
       }
     ],
     "invalid_input_rejected": true,
@@ -29,10 +35,13 @@
   },
   "browser": {
     "browser": "Chrome headless",
-    "desktop": "1440×1080",
+    "desktop": "1440×1000",
     "mobile": "390×844",
+    "overview_is_default": true,
+    "current_action_above_fold": true,
+    "study_and_infrastructure_separated": true,
     "tabs_and_keyboard": true,
-    "project_details": true,
+    "project_details_and_filter": true,
     "comparison_chart": true,
     "local_links": true,
     "javascript_errors": [],
