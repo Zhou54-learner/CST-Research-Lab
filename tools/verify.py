@@ -105,6 +105,9 @@ def verify_browser():
         page.locator('#open-current').click()
         assert page.locator('#learning').is_visible()
         assert state['current']['project_id'] in page.locator('#project-detail').inner_text()
+        if state['current'].get('task_file'):
+            assert page.locator('#project-detail a').get_attribute('href') == state['current']['task_file']
+            assert (lab.ROOT/state['current']['task_file']).is_file()
         assert page.locator('[data-project]').count() == 11
         page.locator('[data-project="P8"]').click()
         assert '自适应采样' in page.locator('#project-detail').inner_text()

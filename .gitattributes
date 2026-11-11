@@ -9,3 +9,5 @@
 # Preserve evidence bytes across platforms: run.json records SHA-256 hashes.
 runs/** -text whitespace=cr-at-eol,-blank-at-eof
 runs/**/solver.log -whitespace
+docs/checks/p1-floquet/*.csv -text whitespace=cr-at-eol
+docs/checks/p1-floquet/solver.log -text -whitespace

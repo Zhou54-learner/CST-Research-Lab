@@ -24,9 +24,13 @@
   "not_tested": [
     "thermal solver",
     "GPU acceleration",
-    "frequency-domain solver",
     "MCP server",
     "autonomous research agent"
   ],
-  "cst_build": "2025.1 / change 1339251 (native solver log)"
+  "cst_build": "2025.1 / change 1339251 (native solver log)",
+  "frequency_domain_validation": {
+    "status": "passed",
+    "scope": "Small lossless Floquet slab, All+Floquet; not all FD configurations",
+    "evidence": "docs/checks/p1-floquet/check.json"
+  }
 }

@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-11T12:24:43+08:00",
-  "verification_script_sha256": "185e4b2f242b32edfd9d3b9f5e9098f699dd3aea0ddc647a533cae4391f1a7d1",
+  "checked_at": "2026-11-11T16:30:56+08:00",
+  "verification_script_sha256": "586e8a074beecdcd004dd3e27810dd7929dea7670f301651dc0114a8f7836042",
   "browser": {
     "browser": "Chrome headless",
     "desktop": "1440×1000",

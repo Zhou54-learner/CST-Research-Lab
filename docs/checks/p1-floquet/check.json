@@ -1,0 +1,31 @@
+{
+  "purpose": "Instructor preparation; not learner progress",
+  "status": "passed",
+  "checked_at": "2026-11-11T16:30:23+08:00",
+  "parameters": {
+    "epsilon_r": 2.25,
+    "thickness_um": 120,
+    "period_um": 200,
+    "air_each_side_um": 250,
+    "frequency_GHz": [
+      200,
+      400
+    ]
+  },
+  "solver": "CST 2025 frequency domain, tetrahedral, All+Floquet excitations separately",
+  "analysed_input": "Zmin mode 1",
+  "samples": 201,
+  "max_power_balance_error": 0.0003237096067969514,
+  "max_analytic_T_error": 0.00032880605775775784,
+  "limit": 0.01,
+  "analytic_reference": "T=1/[1+(n^2-1)^2/(4*n^2)*sin(2*pi*n*d*f/c)^2], n=1.5, c=299792458 m/s",
+  "local_model": ".local/p1-preflight/attempt2/probe.cst",
+  "limitations": [
+    "Separate single-excitation API probe failed with database-write error; cause unresolved. Task uses verified All+Floquet setup.",
+    "Teaching probe differs from learner design; no learner ability inferred."
+  ],
+  "artifacts": {
+    "sparameters.csv": "b7fead9509bd2956f12478bc6f93b2aa898403929b56010dd1b5a7219a1f50f6",
+    "solver.log": "e2b67aff0424af26f77518da1990791c8c93f216b28b2020c14c09d73dc0fef3"
+  }
+}
