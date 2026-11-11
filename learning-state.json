@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T17:32:17+08:00",
+  "updated_at": "2026-11-11T19:19:37+08:00",
   "stage": "P1 · 第一轮建模",
   "current": {
     "title": "介质透射窗口",
     "goal": "仅调整介质板厚度，在 300 GHz 达到 T ≥ 0.95，并解释物理机制。",
-    "next": "先在 Home → Setup Solver 选择 Frequency Domain Solver（频域求解器）；随后核对边界（Boundaries）、频率范围（Frequency Range）与横向尺寸。",
-    "blocker": "编辑无响应已在重新打开工程后恢复；色散图模板带入的本征模、相移和电壁设置待调整，横向尺寸待从 2000 改为 200 μm。",
+    "next": "在 Background（背景）中设置 Surrounding space（周围空间）：Lower Z / Upper Z 各 250 μm，随后检查 Floquet 端口。",
+    "blocker": "截图已确认求解器切换、边界与横向尺寸修正；角度和单元匹配设置据用户反馈已完成。空气空间、端口和旧参数扫描仍待核对。",
     "project_id": "P1",
     "status": "第一轮进行中",
     "task_file": "projects/P1/README.md"
@@ -212,6 +212,11 @@
       "date": "2026-11-11",
       "kind": "建模检查",
       "text": "P1 已有几何与材料；重开工程后编辑恢复。发现色散图模板和横向尺寸偏差，下一步由学习者手动修正。"
+    },
+    {
+      "date": "2026-11-11",
+      "kind": "学习进展",
+      "text": "P1 求解器、边界与横向尺寸修正有截图依据；继续设置背景空气与端口，尚未求解。"
     }
   ],
   "review_items": []
