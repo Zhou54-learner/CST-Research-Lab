@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "run_id": "20261111-193801-p1-air-control",
+  "project_id": "P1",
+  "source": "cst",
+  "status": "failed",
+  "started_at": "2026-11-11T19:38:01+08:00",
+  "finished_at": "2026-11-11T19:38:08+08:00",
+  "archived_at": "2026-11-11T21:41:17+08:00",
+  "task": {
+    "goal": "Learner-operated air control: test R=0, T=1 before dielectric baseline",
+    "parameters": {
+      "epsilon_r": 1,
+      "mu_r": 1,
+      "thickness_um": 170,
+      "frequency_GHz": [
+        200,
+        400
+      ],
+      "mesh_adaptation_GHz": 300,
+      "excitation": "All+Floquet / All"
+    }
+  },
+  "implementation": {
+    "operator": "learner via CST GUI",
+    "cst_build": "2025.1 / 1339251",
+    "archive_by": "assistant; no solver rerun"
+  },
+  "metrics": {},
+  "error": "Could not compute preconditioner at 247.4 GHz; S-matrix postprocessing subsequently failed. Low available-memory warning also present; causality unconfirmed.",
+  "artifacts": [
+    {
+      "path": "runs/20261111-193801-p1-air-control/solver.log",
+      "sha256": "8d01361bd12afa54b8f1fd260f0acac4f72349b404edee55fc7314ad2f370004"
+    },
+    {
+      "path": "runs/20261111-193801-p1-air-control/model-history.json",
+      "sha256": "49e542727f0630db079f5e780fbbe4a84a712cc7e5b313cc9d80277feec7e450"
+    },
+    {
+      "path": "runs/20261111-193801-p1-air-control/air-control.cst",
+      "sha256": "995d71c0f3ad8c52fc182a5cd6b1064d1a022a9ecc4bb24704d6a570e91271cf"
+    }
+  ],
+  "notes": [
+    "Native log includes an earlier failed attempt at approximately 19:36 as well as this 19:38 retry; only the latest attempt is indexed here.",
+    "Archived .cst is the saved project snapshot; completeness of embedded partial results has not been validated. Curves from the failed run are not accepted as a completed broadband result."
+  ]
+}
