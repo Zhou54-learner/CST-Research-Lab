@@ -82,30 +82,57 @@ def verify_records():
 
 def verify_browser():
     from playwright.sync_api import sync_playwright
+    (lab.ROOT/'.local').mkdir(exist_ok=True)
     errors = []
     network = []
     with sync_playwright() as p:
         browser = p.chromium.launch(channel='chrome', headless=True)
-        page = browser.new_page(viewport={'width':1440,'height':1080}, device_scale_factor=1)
+        page = browser.new_page(viewport={'width':1440,'height':1000}, device_scale_factor=1)
         page.on('pageerror', lambda err: errors.append(str(err)))
         page.on('request', lambda req: network.append(req.url) if req.url.startswith(('http:', 'https:')) else None)
         page.goto((lab.ROOT/'index.html').as_uri())
+        state = lab.read(lab.STATE)
+        assert page.locator('#overview').is_visible()
+        assert not page.locator('#learning').is_visible()
+        assert page.locator('#current-id').inner_text() == state['current']['project_id']
+        assert page.locator('#next').inner_text() == state['current']['next']
+        assert page.locator('#open-current').bounding_box()['y'] < 700
+        study_runs = [r for r in lab.runs() if r['project_id'] != 'INFRA']
+        infra_runs = [r for r in lab.runs() if r['project_id'] == 'INFRA']
+        assert page.locator('#learning-run-count').inner_text().startswith(str(len(study_runs)))
+        page.screenshot(path=str(lab.ROOT/'.local/dashboard-desktop.png'), full_page=True)
+        page.locator('#open-current').click()
+        assert page.locator('#learning').is_visible()
+        assert state['current']['project_id'] in page.locator('#project-detail').inner_text()
         assert page.locator('[data-project]').count() == 11
         page.locator('[data-project="P8"]').click()
         assert '自适应采样' in page.locator('#project-detail').inner_text()
+        page.locator('#project-filter').select_option('已完成')
+        assert page.locator('[data-project]:visible').count() == len([p for p in state['projects'] if p['status']=='已完成'])
+        page.locator('#project-filter').select_option('全部状态')
+        page.get_by_role('tab', name='能力进展').click()
         page.locator('.skill summary').first.click()
         assert page.locator('.skill').first.get_attribute('open') is not None
-        page.screenshot(path=str(lab.ROOT/'.local/dashboard-desktop.png'), full_page=True)
-        page.get_by_role('tab', name='运行与证据').click()
-        assert page.locator('#runs tr').count() == len(lab.runs())
+        page.get_by_role('tab', name='实验记录').click()
+        assert page.locator('#study-experiments').is_visible()
+        assert not page.locator('#infra-content').is_visible()
+        page.locator('#scope-infra').click()
+        assert page.locator('#runs tr').count() == len(infra_runs)
+        assert page.locator('#infra-content').is_visible()
         page.locator('#comparison summary').click()
         page.locator('#quantity').select_option('phase')
         assert page.locator('#chart polyline').count() == 2
         page.screenshot(path=str(lab.ROOT/'.local/dashboard-evidence.png'), full_page=True)
-        page.get_by_role('tab', name='学习记忆').click()
+        page.get_by_role('tab', name='复盘与记忆').click()
         assert page.locator('.memory-card').count() == len(lab.read(lab.STATE)['memory'])
-        page.get_by_role('tab', name='学习记忆').press('Home')
-        assert page.get_by_role('tab', name='学习路径').get_attribute('aria-selected') == 'true'
+        page.get_by_role('tab', name='复盘与记忆').press('Home')
+        assert page.get_by_role('tab', name='学习总览').get_attribute('aria-selected') == 'true'
+        page.locator('[data-route="P2"]').click()
+        assert 'P2' in page.locator('#project-detail').inner_text()
+        page.get_by_role('tab', name='学习总览').click()
+        page.locator('#open-infrastructure').click()
+        assert page.locator('#infra-content').is_visible()
+        page.get_by_role('tab', name='学习总览').click()
         # Every local link points to an existing artifact or document.
         broken = []
         for href in page.locator('a[href]').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'):
@@ -116,19 +143,26 @@ def verify_browser():
         assert not broken, f'Broken local links: {broken}'
         page.set_viewport_size({'width':390,'height':844})
         page.screenshot(path=str(lab.ROOT/'.local/dashboard-mobile.png'), full_page=True)
-        for name in ['学习路径','运行与证据','学习记忆']:
+        for name in ['学习总览','项目与任务','能力进展','实验记录','复盘与记忆']:
             page.get_by_role('tab', name=name).click()
             assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth'), f'Mobile overflow: {name}'
         assert not errors, errors
         assert not network, network
         browser.close()
-    return {'browser':'Chrome headless', 'desktop':'1440×1080', 'mobile':'390×844', 'tabs_and_keyboard':True, 'project_details':True, 'comparison_chart':True, 'local_links':True, 'javascript_errors':errors, 'external_requests':network}
+    return {'browser':'Chrome headless', 'desktop':'1440×1000', 'mobile':'390×844', 'overview_is_default':True, 'current_action_above_fold':True, 'study_and_infrastructure_separated':True, 'tabs_and_keyboard':True, 'project_details_and_filter':True, 'comparison_chart':True, 'local_links':True, 'javascript_errors':errors, 'external_requests':network}
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--browser', action='store_true', help='Requires optional Playwright and installed Chrome')
+    parser.add_argument('--browser-only', action='store_true', help='Check dashboard without repeating simulation-evidence acceptance')
     args = parser.parse_args()
+    if args.browser_only:
+        lab.check()
+        result = {'checked_at':lab.stamp(), 'verification_script_sha256':lab.digest(__file__), 'browser':verify_browser()}
+        lab.write(lab.ROOT/'docs/dashboard-acceptance.json', result)
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        raise SystemExit(0)
     result = {'checked_at':lab.stamp(), 'verification_script_sha256':lab.digest(__file__), 'functional':verify_records()}
     if args.browser:
         result['browser'] = verify_browser()

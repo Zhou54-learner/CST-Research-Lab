@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-11-11T12:24:43+08:00",
+  "verification_script_sha256": "185e4b2f242b32edfd9d3b9f5e9098f699dd3aea0ddc647a533cae4391f1a7d1",
+  "browser": {
+    "browser": "Chrome headless",
+    "desktop": "1440×1000",
+    "mobile": "390×844",
+    "overview_is_default": true,
+    "current_action_above_fold": true,
+    "study_and_infrastructure_separated": true,
+    "tabs_and_keyboard": true,
+    "project_details_and_filter": true,
+    "comparison_chart": true,
+    "local_links": true,
+    "javascript_errors": [],
+    "external_requests": []
+  }
+}
