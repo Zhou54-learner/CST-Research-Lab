@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-11-11T11:34:36+08:00",
+  "verification_script_sha256": "f5290f3793ffae6ebc7aaece83d093422d1e77d83d1202b4be19299413af43e5",
+  "functional": {
+    "solver_vs_analytic": [
+      {
+        "run_id": "20261111-112952-309807-cst",
+        "length_mm": 10.0,
+        "max_complex_s21_error": 0.002583635592460732,
+        "limit": 0.02
+      },
+      {
+        "run_id": "20261111-113056-285148-cst",
+        "length_mm": 12.0,
+        "max_complex_s21_error": 0.0029406301770288864,
+        "limit": 0.02
+      },
+      {
+        "run_id": "20261111-113257-479831-cst",
+        "length_mm": 10.0,
+        "max_complex_s21_error": 0.002583635592460732,
+        "limit": 0.02
+      }
+    ],
+    "invalid_input_rejected": true,
+    "stale_page_detected": true,
+    "failed_run_recorded": true,
+    "artifact_hashes_verified": true
+  },
+  "browser": {
+    "browser": "Chrome headless",
+    "desktop": "1440×1080",
+    "mobile": "390×844",
+    "tabs_and_keyboard": true,
+    "project_details": true,
+    "comparison_chart": true,
+    "local_links": true,
+    "javascript_errors": [],
+    "external_requests": []
+  }
+}

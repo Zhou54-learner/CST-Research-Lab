@@ -1,0 +1,11 @@
+* text=auto eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.csv text eol=lf
+*.cst binary
+*.png binary
+# Preserve evidence bytes across platforms: run.json records SHA-256 hashes.
+runs/** -text whitespace=cr-at-eol,-blank-at-eof
+runs/**/solver.log -whitespace

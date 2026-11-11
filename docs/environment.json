@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-11-11T11:29:35+08:00",
+  "python": "3.11.9",
+  "platform": "Windows",
+  "cst_version": "2025",
+  "checks": {
+    "cst_executable": true,
+    "python_interface": true,
+    "result_reader": true
+  },
+  "hardware": {
+    "cpu": "12th Gen Intel(R) Core(TM) i7-12700H",
+    "ram_gb": 15.8,
+    "gpu": [
+      "Parsec Virtual Display Adapter",
+      "NVIDIA GeForce RTX 3070 Ti Laptop GPU"
+    ]
+  },
+  "tools": {
+    "git": "git version 2.55.0.windows.2",
+    "node": "v24.20.0"
+  },
+  "solver_validation": "See actual CST run records; imports alone do not establish solver availability.",
+  "not_tested": [
+    "thermal solver",
+    "GPU acceleration",
+    "frequency-domain solver",
+    "MCP server",
+    "autonomous research agent"
+  ],
+  "cst_build": "2025.1 / change 1339251 (native solver log)"
+}

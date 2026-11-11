@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "run_id": "20261111-112938-236352-analytic",
+  "project_id": "INFRA",
+  "status": "passed",
+  "source": "analytic",
+  "started_at": "2026-11-11T11:29:38+08:00",
+  "task": {
+    "goal": "Verify tool → data → checks → dashboard; not a student project",
+    "parameters": {
+      "length_mm": 10,
+      "width_mm": 22.86,
+      "height_mm": 10.16,
+      "frequency_GHz": [
+        8,
+        12
+      ]
+    },
+    "budget": {
+      "solver_timeout_s": 180
+    },
+    "criteria": {
+      "max_reflection_power": 0.01,
+      "max_power_balance_error": 0.02
+    }
+  },
+  "implementation": {
+    "python": "3.11.9",
+    "lab_sha256": "7cc63c3568d36f24dbeb20f03b55672e8914ae241ec8b84622b75c27980d5f0e",
+    "worker_sha256": "0b8b741f4f822c0b34644363cf8efe9762e319ee4c8e094d127bbb206d60bb0d"
+  },
+  "artifacts": [
+    {
+      "path": "runs/20261111-112938-236352-analytic/cst_worker.py",
+      "sha256": "0b8b741f4f822c0b34644363cf8efe9762e319ee4c8e094d127bbb206d60bb0d"
+    },
+    {
+      "path": "runs/20261111-112938-236352-analytic/lab.py",
+      "sha256": "7cc63c3568d36f24dbeb20f03b55672e8914ae241ec8b84622b75c27980d5f0e"
+    },
+    {
+      "path": "runs/20261111-112938-236352-analytic/power.svg",
+      "sha256": "1da91431f6d291d0ba8968d7c6e64955f80f9f35627c5a00b2f67ab61c6ab0ea"
+    },
+    {
+      "path": "runs/20261111-112938-236352-analytic/sparameters.csv",
+      "sha256": "10c90a2bfb6f2c32fd44af8fc7ae0bbc542f148a2c73ee5bf50ec8dd9704bfd7"
+    }
+  ],
+  "human_interventions": null,
+  "metrics": {
+    "samples": 101,
+    "max_reflection_power": 0.0,
+    "max_power_balance_error": 0.0,
+    "s21_phase_10GHz_rad": -1.5823825631301973
+  },
+  "finished_at": "2026-11-11T11:29:38+08:00",
+  "elapsed_s": 0.0
+}

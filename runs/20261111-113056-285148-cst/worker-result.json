@@ -1,0 +1,16 @@
+{
+  "source": "cst",
+  "length_mm": 12.0,
+  "status": "passed",
+  "geometry_saved": true,
+  "solver": "HF Time Domain",
+  "samples": 1001,
+  "max_reflection_power": 6.083819520854286e-11,
+  "max_power_balance_error": 0.0002133024691542973,
+  "s21_phase_10GHz_rad": -1.90028540929427,
+  "criteria": {
+    "max_reflection_power": 0.01,
+    "max_power_balance_error": 0.02
+  },
+  "elapsed_s": 25.907
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "run_id": "20261111-112952-309807-cst",
+  "project_id": "INFRA",
+  "status": "passed",
+  "source": "cst",
+  "started_at": "2026-11-11T11:29:52+08:00",
+  "task": {
+    "goal": "Verify tool → data → checks → dashboard; not a student project",
+    "parameters": {
+      "length_mm": 10.0,
+      "width_mm": 22.86,
+      "height_mm": 10.16,
+      "frequency_GHz": [
+        8,
+        12
+      ]
+    },
+    "budget": {
+      "solver_timeout_s": 180
+    },
+    "criteria": {
+      "max_reflection_power": 0.01,
+      "max_power_balance_error": 0.02
+    }
+  },
+  "implementation": {
+    "python": "3.11.9",
+    "lab_sha256": "7cc63c3568d36f24dbeb20f03b55672e8914ae241ec8b84622b75c27980d5f0e",
+    "worker_sha256": "0b8b741f4f822c0b34644363cf8efe9762e319ee4c8e094d127bbb206d60bb0d",
+    "cst_version": "2025"
+  },
+  "artifacts": [
+    {
+      "path": "runs/20261111-112952-309807-cst/cst_worker.py",
+      "sha256": "0b8b741f4f822c0b34644363cf8efe9762e319ee4c8e094d127bbb206d60bb0d"
+    },
+    {
+      "path": "runs/20261111-112952-309807-cst/execution.log",
+      "sha256": "9e010952c10b39572e7ca55e93818a8c06b978f90a9cd7ee502a88e5c44490f4"
+    },
+    {
+      "path": "runs/20261111-112952-309807-cst/history.vba",
+      "sha256": "81576c237c4527ca6383b62a3db5744ae391f856e98baf6af08a459ae7f4090c"
+    },
+    {
+      "path": "runs/20261111-112952-309807-cst/lab.py",
+      "sha256": "7cc63c3568d36f24dbeb20f03b55672e8914ae241ec8b84622b75c27980d5f0e"
+    },
+    {
+      "path": "runs/20261111-112952-309807-cst/power.svg",
+      "sha256": "8c5cc3ed192bc41120fc37762b5a21b661db801732c6d353494d66fba28a2290"
+    },
+    {
+      "path": "runs/20261111-112952-309807-cst/result-tree.json",
+      "sha256": "2a7603d8418f3422e71dca0af3ba2ac3d063c283a16c59bfa7eb67cbafcc96eb"
+    },
+    {
+      "path": "runs/20261111-112952-309807-cst/sparameters.csv",
+      "sha256": "1d022f79e162c0234a5a13a87e3dd5e40d33fa12cc9528b2ce440c111c4d3dfe"
+    },
+    {
+      "path": "runs/20261111-112952-309807-cst/waveguide.cst",
+      "sha256": "4170e50a1b61ef4709c8dbdde4aa52f7e003c0934ef74a34d2bf108d63073281"
+    },
+    {
+      "path": "runs/20261111-112952-309807-cst/worker-result.json",
+      "sha256": "37a0f759fcd77fd1f6f67da74cf65f4e09eca27606b459655b3ac70867fd4ba3"
+    }
+  ],
+  "human_interventions": null,
+  "metrics": {
+    "samples": 1001,
+    "max_reflection_power": 5.179947271723939e-11,
+    "max_power_balance_error": 0.00020289004004936384,
+    "s21_phase_10GHz_rad": -1.583625956841434
+  },
+  "finished_at": "2026-11-11T11:30:19+08:00",
+  "elapsed_s": 27.25
+}
